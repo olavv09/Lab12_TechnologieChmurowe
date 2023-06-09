@@ -1,6 +1,6 @@
 {
   "name": "aleksandra-wojcik",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.15.0",
