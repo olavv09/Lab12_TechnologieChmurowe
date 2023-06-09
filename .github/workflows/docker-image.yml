@@ -6,13 +6,6 @@ on:
   pull_request:
     branches: [ "main" ]
     
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#     - uses: actions/checkout@v3
-#     - name: Build the Docker image
-#       run: docker compose up -d 
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,8 +16,20 @@ jobs:
           node-version: 16
       - run: npm install
       - run: npm test
-  publish-gpr:
+      
+  audit:
     needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://npm.pkg.github.com/
+      - run: npm audit
+      
+  publish-gpr:
+    needs: audit
     runs-on: ubuntu-latest
     permissions:
       contents: read
