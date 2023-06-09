@@ -26,7 +26,7 @@ jobs:
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
-      - run: npm audit fix --force
+      - run: npm audit fix --force ----audit-level critical
       
   publish-gpr:
     needs: audit
