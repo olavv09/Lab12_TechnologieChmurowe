@@ -36,8 +36,10 @@ jobs:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
       - run: |
-            echo '//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}' > .npmrc
-            cat .npmrc
+          cat << EOF > "$HOME/.npmrc"
+            email=my@email.com
+            //registry.npmjs.org/:_authToken=$NPM_TOKEN
+          EOF
       - run: npm install
       - run: npm publish
         env:
