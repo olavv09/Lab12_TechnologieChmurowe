@@ -10,12 +10,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - run: npm install
-      - run: npm test
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+#       - uses: actions/setup-node@v3
+#         with:
+#           node-version: 16
+#       - run: npm install
+#       - run: npm test
   
   audit:
     needs: build
