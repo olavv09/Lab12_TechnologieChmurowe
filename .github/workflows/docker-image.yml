@@ -37,7 +37,7 @@ jobs:
           registry-url: https://npm.pkg.github.com/
       - run: |
           cat << EOF > "$HOME/.npmrc"
-            email=my@email.com
+            email=aleksandrawojcik17@gmail.com
             //registry.npmjs.org/:_authToken=$NPM_TOKEN
           EOF
       - run: npm install
