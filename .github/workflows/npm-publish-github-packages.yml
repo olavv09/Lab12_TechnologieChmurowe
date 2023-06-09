@@ -3,11 +3,17 @@
 
 name: Publish
 
+# on:
+#   workflow_run:
+#       workflows: ["Docker Image CI"]
+#       types:
+#         - complete
 on:
   workflow_run:
-      workflows: ["Docker Image CI"]
-      types:
-        - complete
+    workflows: ["Docker Image CI"]
+    types: [complete]
+    branches:
+      - '**'
 
 jobs:
   build:
